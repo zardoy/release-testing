@@ -15,6 +15,6 @@ jobs:
             # TODO install from action/direct url
             # TODO caching
         - run: npm i -g pnpm
-        - run: pnpx zardoy-release testing
+        - run: pnpx -y zardoy-release testing
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
