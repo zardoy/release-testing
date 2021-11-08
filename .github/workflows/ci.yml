@@ -13,7 +13,7 @@ jobs:
           with:
             node-version: 14
         - id: get-repos-1
-          run: node -p "'::set-output name=repos::'+JSON.stringify(JSON.parse(require('fs').readFileSync('package.json', 'utf-8')).files)"
+          run: node -p "'::set-output name=repos::'+JSON.parse(require('fs').readFileSync('package.json', 'utf-8')).files.join('%0A')"
         - run: echo $OUTPUT
           env:
-            OUTPUT: ${{ join(fromJSON(steps.get-repos-1.outputs.repos), '\n') }}
+            OUTPUT: ${{ steps.get-repos-1.outputs.repos }}
