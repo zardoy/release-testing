@@ -1,5 +1,6 @@
 name: Release
 on:
+  push:
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -15,4 +16,4 @@ jobs:
           run: node -p "'::set-output name=repos::'+JSON.stringify(JSON.parse(require('fs').readFileSync('package.json', 'utf-8')).files)"
         - run: echo $OUTPUT
           env:
-            OUTPUT: ${{ fromJSON(steps.get-repos-1.outputs.repos) }}
+            OUTPUT: ${{ join(fromJSON(steps.get-repos-1.outputs.repos), '\n') }}
