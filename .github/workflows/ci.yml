@@ -12,8 +12,8 @@ jobs:
         platform:
           - windows-latest
           - macos-latest
-      name: Test ${{matrix.platform}}
-      steps:
+    name: Test ${{matrix.platform}}
+    steps:
         - uses: actions/setup-node@v2
         - run: node -p '`${platform.version}: ${process.cwd()}`'
   release:
