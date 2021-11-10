@@ -16,7 +16,7 @@ jobs:
     steps:
         - uses: actions/setup-node@v2
         - run: node -p process.version
-        - run: "node -p process.cwd()"
+        - run: node -p "process.cwd()"
   release:
     needs: mat
     runs-on: ubuntu-latest
