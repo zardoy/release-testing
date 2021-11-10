@@ -15,7 +15,8 @@ jobs:
     name: Test ${{matrix.platform}}
     steps:
         - uses: actions/setup-node@v2
-        - run: node -p '`${platform.version}: ${process.cwd()}`'
+        - run: node -p platform.version
+        - run: node -p process.cwd()
   release:
     runs-on: ubuntu-latest
     steps:
