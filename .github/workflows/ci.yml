@@ -5,28 +5,14 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  mat:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        platform:
-          - windows-latest
-          - macos-latest
-    name: Test ${{matrix.platform}}
-    steps:
-        - uses: actions/setup-node@v2
-        - run: node -p process.version
-        - run: node -p "process.cwd()"
   release:
-    needs: mat
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
         - uses: actions/checkout@v2
         - uses: actions/setup-node@v2
           with:
             node-version: 14
-        - id: get-repos-1
-          run: node -p "'::set-output name=repos::'+JSON.parse(require('fs').readFileSync('package.json', 'utf-8')).files.join('%0D')"
-        - run: echo $OUTPUT
+        - run: npx -y zardoy-release testing
           env:
-            OUTPUT: ${{ steps.get-repos-1.outputs.repos }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
