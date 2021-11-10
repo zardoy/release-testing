@@ -5,6 +5,17 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  mat:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform:
+          - windows-latest
+          - macos-latest
+      name: Test ${{matrix.platform}}
+      steps:
+        - uses: actions/setup-node@v2
+        - run: node -p '`${platform.version}: ${process.cwd()}`'
   release:
     runs-on: ubuntu-latest
     steps:
