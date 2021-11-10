@@ -13,6 +13,6 @@ jobs:
         - uses: actions/setup-node@v2
           with:
             node-version: 14
-        - run: npx -y zardoy-release testing
+        - run: npx -y zardoy-release -- testing
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
