@@ -1,9 +1,9 @@
-name: Release
+name: Dump
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 on:
-  workflow-dispatch:
+  workflow_dispatch:
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-        - uses: node -e 'console.log(JSON.stringify(process.env))'
+      - uses: node -e 'console.log(JSON.stringify(process.env))'
