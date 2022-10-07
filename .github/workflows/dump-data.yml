@@ -6,4 +6,4 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: node -e 'console.log(JSON.stringify(process.env))'
+      - run: node -e 'console.log(JSON.stringify(process.env))'
