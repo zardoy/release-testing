@@ -13,6 +13,6 @@ jobs:
         with:
           node-version: 14
       - run: npm i -g pnpm
-      - run: pnpx -y zardoy-release testing
+      - run: pnpx zardoy-release testing
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
