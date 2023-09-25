@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: echo "Hello World"
+      - uses: mathiasvr/command-output
+        with:
+          run: echo "test"
         id: hello
       - run: echo "Said ${{ steps.hello.outputs.stdout }}"
