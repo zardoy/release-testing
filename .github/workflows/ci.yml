@@ -9,4 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     container: fedora:35
     steps:
-      - run: npm i -g pnpm && pnpm i
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
