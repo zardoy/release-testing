@@ -5,12 +5,8 @@ on:
     branches:
       - test
 jobs:
-  release:
+  fedora-job:
     runs-on: ubuntu-latest
+    container: fedora:35
     steps:
-      - uses: actions/checkout@v2
-      - uses: mathiasvr/command-output@v2.0.0
-        with:
-          run: echo "test"
-        id: hello
-      - run: echo "Said ${{ steps.hello.outputs.stdout }}"
+      - run: cat /etc/os-release
