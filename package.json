@@ -3,7 +3,7 @@
     "description": "Update me!",
     "private": true,
     "dependencies": {
-        "execa": "^1"
+        "node-canvas-webgl": "^0.3.0"
     },
     "files": [
         "one",
