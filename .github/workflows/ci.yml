@@ -10,6 +10,9 @@ jobs:
     container: fedora:35
     steps:
       - uses: actions/checkout@v2
+        with:
+          repository: "zardoy/prismarine-web-client"
+          ref: "next"
       - uses: actions/setup-node@v2
         with:
           node-version: 18
@@ -19,3 +22,4 @@ jobs:
           run_install: |
             - recursive: true
               args: [--no-frozen-lockfile, --strict-peer-dependencies]
+      - run: pnpm run build
