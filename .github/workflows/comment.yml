@@ -9,4 +9,4 @@ jobs:
     steps:
       # dump env
       - name: Dump GitHub env variables
-        run: run node -e 'console.log(JSON.stringify(process.env))'
+        run: node -e 'console.log(JSON.stringify(process.env))'
