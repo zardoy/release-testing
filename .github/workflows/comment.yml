@@ -9,6 +9,4 @@ jobs:
     steps:
       # dump env
       - name: Dump GitHub env variables
-        env:
-          GITHUB_ENV: ${{ toJson(env) }}
-        run: echo "$GITHUB_ENV"
+        run: run node -e 'console.log(JSON.stringify(process.env))'
