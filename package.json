@@ -1,6 +1,8 @@
 {
+    "name": "release-testing",
     "version": "0.0.0-development",
     "description": "Update me!",
+    "main": "index.js",
     "private": true,
     "optionalDependencies": {
         "node-canvas-webgl": "^0.3.0"

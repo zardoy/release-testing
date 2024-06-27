@@ -10,5 +10,5 @@ jobs:
       # dump env
       - name: Dump GitHub env variables
         env:
-          GITHUB_ENV: ${{ toJson(env) }}
-        run: echo "$GITHUB_ENV"
+          GITHUB_CONTEXT: ${{ github.event.comment.issue.pull_request.url }}
+        run: echo "$GITHUB_CONTEXT"
