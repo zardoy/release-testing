@@ -10,5 +10,6 @@ jobs:
     steps:
       # print cpu gpu memory
       - run: lscpu
-      - run: free -h
+      # gpu
+      - run: nvidia-smi
       # print env
