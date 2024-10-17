@@ -10,9 +10,7 @@ jobs:
       (
         contains(github.event.comment.body, '/update')
       )
-    permissions:
-      pull-requests: write
-      contents: write
+    permissions: write-all
     steps:
       - name: Set up Git
         run: |
