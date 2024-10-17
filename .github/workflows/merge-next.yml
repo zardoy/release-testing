@@ -28,6 +28,10 @@ jobs:
           ref: refs/pull/${{ github.event.issue.number }}/head
       - name: Fetch All Branches
         run: git fetch --all
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: Checkout PR
         run: git checkout ${{ github.event.issue.pull_request.head.ref }}
       - name: Merge From Next
