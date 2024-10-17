@@ -19,7 +19,7 @@ jobs:
           git config --global credential.helper store
       - name: Store GitHub token
         run: |
-          echo "https://github.com:${{ secrets.GITHUB_TOKEN }}@github.com" > ~/.git-credentials
+          echo "https://github.com:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0 # Fetch all history so we can merge branches
