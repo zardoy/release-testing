@@ -33,7 +33,7 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
       - name: Checkout PR
-        run: git checkout ${{ github.event.issue.pull_request.head.ref }}
+        run: git checkout refs/pull/${{ github.event.issue.number }}/head
       - name: Merge From Next
         run: git merge origin/main --strategy-option=theirs
       - name: Push Changes
