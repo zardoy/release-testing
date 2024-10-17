@@ -27,13 +27,13 @@ jobs:
           fetch-depth: 0 # Fetch all history so we can merge branches
           # ref: refs/pull/${{ github.event.issue.number }}/head
       - name: Fetch All Branches
-        run: git fetch --all
+        run: git fetch origin pull/${{ github.event.issue.number }}/head:pr-${{ github.event.issue.number }}
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
       - name: Checkout PR
-        run: git checkout -b pr-${{ github.event.issue.number }} refs/pull/${{ github.event.issue.number }}/head
+        run: git checkout -b pr-${{ github.event.issue.number }} pull/${{ github.event.issue.number }}/head
       - name: Merge From Next
         run: git merge origin/main --strategy-option=theirs
       - name: Push Changes
