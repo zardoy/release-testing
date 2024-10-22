@@ -9,5 +9,5 @@ jobs:
       # dump env
       - name: Print PR number
         env:
-          GITHUB_CONTEXT: ${{ github.event.pull_request.number }}
+          GITHUB_CONTEXT: ${{ github.event.issue.number }}
         run: echo "$GITHUB_CONTEXT"
