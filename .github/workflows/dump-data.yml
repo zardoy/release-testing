@@ -1,9 +1,15 @@
 name: Dump
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - run: node -e 'console.log(JSON.stringify(process.env))'
+      # print cpu gpu memory
+      - run: lscpu
+      # gpu
+      - run: nvidia-smi
+      # print env

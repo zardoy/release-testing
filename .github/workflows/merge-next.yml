@@ -1,0 +1,38 @@
+name: Update Base Branch Command
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: >-
+      github.event.issue.pull_request != '' &&
+      (
+        contains(github.event.comment.body, '/update')
+      )
+    permissions: write-all
+    steps:
+      - name: Set up Git
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global credential.helper store
+      - name: Store GitHub token
+        run: |
+          echo "https://github.com:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Fetch all history so we can merge branches
+          # ref: refs/pull/${{ github.event.issue.number }}/head
+      - name: Fetch All Branches
+        run: git fetch origin pull/${{ github.event.issue.number }}/head:pr-${{ github.event.issue.number }}
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Checkout PR
+        run: git checkout pr-${{ github.event.issue.number }}
+      - name: Merge From Next
+        run: git merge origin/main --strategy-option=theirs
+      - name: Push Changes
+        run: git push origin pr-${{ github.event.issue.number }}

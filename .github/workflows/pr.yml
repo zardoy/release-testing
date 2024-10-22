@@ -1,0 +1,13 @@
+# on comment
+name: PR dump data
+on:
+  pull_request:
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      # dump env
+      - name: Print PR number
+        env:
+          GITHUB_CONTEXT: ${{ github.event.pull_request.number }}
+        run: echo "$GITHUB_CONTEXT"

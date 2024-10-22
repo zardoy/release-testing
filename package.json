@@ -7,6 +7,9 @@
     "optionalDependencies": {
         "node-canvas-webgl": "^0.3.0"
     },
+    "release": {
+        "attachReleaseFiles": "test.html"
+    },
     "files": [
         "one",
         "zard/two"
