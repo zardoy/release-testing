@@ -12,10 +12,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     if: >-
-      github.event_name == 'issue_comment' &&
-      startsWith(github.event.comment.body, '/deploy') ||
-      github.event_name == 'pull_request' &&
-      fromJSON(vars.AUTO_DEPLOY_PRS).contains(github.event.pull_request.number)
+      github.event.issue.pull_request != '' &&
+      (
+        contains(github.event.comment.body, '/deploy')
+      )
     permissions:
       pull-requests: write
     steps:
