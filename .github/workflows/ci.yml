@@ -4,9 +4,7 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
   ALIASES: ${{ vars.ALIASES }}
 on:
-  issue_comment:
-    types: [created]
-  pull_request:
+  push:
 jobs:
   deploy:
     runs-on: ubuntu-latest
