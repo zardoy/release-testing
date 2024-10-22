@@ -9,5 +9,5 @@ jobs:
       # dump env
       - name: Print PR number
         env:
-          GITHUB_CONTEXT: ${{ github.event.issue.number }}
+          GITHUB_CONTEXT: ${{ toJson(github.event) }}
         run: echo "$GITHUB_CONTEXT"
