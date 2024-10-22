@@ -5,11 +5,9 @@ on:
     branches:
       - main
 jobs:
-  release:
+  job:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: npm i -g pnpm
-      - run: pnpx zardoy-release testing
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # print cpu, ram & gpu info
+      - name: Print CPU, RAM & GPU info
+        run: lscpu
