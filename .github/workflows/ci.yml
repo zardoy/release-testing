@@ -11,10 +11,15 @@ on:
   pull_request:
   push:
 jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "COMMENT_TRIGGER_OK: ${{ vars.COMMENT_TRIGGER_OK }}"
+      - run: echo "PULL_TRIGGER_OK: ${{ toJSON(vars.PULL_TRIGGER_OK) }}"
   deploy:
     runs-on: ubuntu-latest
     # todo skip already created deploys on that commit
-    if: env.COMMENT_TRIGGER_OK || env.PULL_TRIGGER_OK
+    if: vars.COMMENT_TRIGGER_OK || vars.PULL_TRIGGER_OK
     permissions:
       pull-requests: write
     steps:
