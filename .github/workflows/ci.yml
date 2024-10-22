@@ -14,8 +14,8 @@ jobs:
   debug:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "COMMENT_TRIGGER_OK: ${{ vars.COMMENT_TRIGGER_OK }}"
-      - run: echo "PULL_TRIGGER_OK: ${{ toJSON(vars.PULL_TRIGGER_OK) }}"
+      - run: echo "COMMENT_TRIGGER_OK ${{ toJSON(vars.COMMENT_TRIGGER_OK) }}"
+      - run: echo "PULL_TRIGGER_OK ${{ toJSON(vars.PULL_TRIGGER_OK) }}"
   deploy:
     runs-on: ubuntu-latest
     # todo skip already created deploys on that commit
