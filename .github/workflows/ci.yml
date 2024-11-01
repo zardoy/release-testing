@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm i -g pnpm
-      - run: pnpx zardoy-release empty --no-github
+      - run: pnpx zardoy-release empty --skip-github
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         id: release
