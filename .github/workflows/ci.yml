@@ -11,8 +11,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm i -g pnpm
       - run: pnpx zardoy-release empty --no-github
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         id: release
-      - run: echo "${{ steps.release.outputs.latestTag }}"
-      - run: echo "${{ steps.release.outputs.changelog }}"
+      - run: echo "${{ steps.release.outputs }}" > release.json
+      # read release.json
+      - run: cat release.json
