@@ -14,6 +14,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         id: release
-      - run: echo '${{ toJson(steps.release.outputs) }}' > release.json
-      # read release.json
+      - run: echo "${{ toJson(steps.release.outputs) }}"
+      # - run: echo '${{ toJson(steps.release.outputs) }}' > release.json
+      - run: echo "SHORT_SHA=$(git rev-parse --short $GITHUB_SHA)" >> $GITHUB_ENV
+      - run: echo '{"latestTag": "${{ env.SHORT_SHA }}"}' > release.json
       - run: cat release.json
