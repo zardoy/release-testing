@@ -10,7 +10,10 @@ jobs:
       (
         contains(github.event.comment.body, '/update')
       )
-    permissions: write-all
+    permissions:
+      pull-requests: write
+      contents: write
+      workflows: write
     steps:
       - name: Set up Git
         run: |
@@ -18,12 +21,13 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global credential.helper store
       - name: Store GitHub token
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           echo "https://github.com:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0 # Fetch all history so we can merge branches
-          # ref: refs/pull/${{ github.event.issue.number }}/head
       - name: Fetch All Branches
         run: git fetch origin pull/${{ github.event.issue.number }}/head:pr-${{ github.event.issue.number }}
       - name: Dump GitHub context
@@ -32,7 +36,7 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
       - name: Checkout PR
         run: git checkout pr-${{ github.event.issue.number }}
-      - name: Merge From Next
+      - name: Merge From Main
         run: git merge origin/main --strategy-option=theirs
       - name: Push Changes
         run: git push origin pr-${{ github.event.issue.number }}
