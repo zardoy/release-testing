@@ -14,7 +14,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         id: release
-      - run: echo "${{ toJson(steps.release.outputs) }}"
       # - run: echo '${{ toJson(steps.release.outputs) }}' > release.json
       - run: |
           echo "{\"test\": \"$(git rev-parse --short $GITHUB_SHA)\"}" > release.json
