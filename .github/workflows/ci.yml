@@ -18,7 +18,7 @@ jobs:
       # read test.json into output
       - id: read_file
         run: |
-          file_contents='$(cat test.json)'
+          file_contents=$(cat test.json)
           echo "::set-output name=file_contents::$file_contents"
       - run: echo '${{ toJson(fromJson(steps.read_file.outputs.file_contents)) }}'
       # - run: cat assets/release.json

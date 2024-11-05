@@ -1,6 +1,1 @@
-{
-    "tag": "v0.1.8",
-    "previousTag": "v0.1.7",
-    "latestTag": "v0.1.8",
-    "changelog": "\n\n## [vv0.1.8](releases/tag/vv0.1.8) - 2024-11-05\n<!-- bump-type:patch -->\n### Bug Fixes\n\n- test-change [`cc03d94`](/commit/cc03d94263e5ef6dfa64007af14683e908bcd6ee)\n- testing new github [`31488fe`](/commit/31488fe9b08125d8534be652ab1931c2ccbfab17)"
-}
+{ "tag": "v0.1.8", "previousTag": "v0.1.7", "latestTag": "v0.1.8", "changelog": "\n\n## [vv0.1.8](releases/tag/vv0.1.8) - 2024-11-05\n<!-- bump-type:patch -->\n### Bug Fixes\n\n- test-change [`cc03d94`](/commit/cc03d94263e5ef6dfa64007af14683e908bcd6ee)\n- testing new github [`31488fe`](/commit/31488fe9b08125d8534be652ab1931c2ccbfab17)" }
