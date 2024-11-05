@@ -16,6 +16,9 @@ jobs:
         id: releaseInfo
       - run: mkdir assets
       # read test.json into output
-      - run: echo "file_contents=$(cat test.json)" >> $GITHUB_ENV
-      - run: echo '${{ toJson(env.file_contents) }}'
+      - id: read_file
+        run: |
+          file_contents=$(cat test.json)
+          echo "::set-output name=file_contents::$file_contents"
+      - run: echo "${{ steps.read_file.outputs.file_contents }}"
       # - run: cat assets/release.json
