@@ -15,7 +15,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         id: releaseInfo
       - run: mkdir assets
-      - run: echo '${{ toJson(steps.releaseInfo.outputs) }}' > assets/release.json
+      - run: echo "${{ toJson(steps.releaseInfo.outputs) }}" > assets/release.json
       # - run: |
       #     echo "{\"test\": \"$(git rev-parse --short $GITHUB_SHA)\"}" > release.json
       - run: cat assets/release.json
