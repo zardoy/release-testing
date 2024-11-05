@@ -13,8 +13,9 @@ jobs:
       - run: pnpx zardoy-release empty --skip-github
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        id: release
-      # - run: echo '${{ toJson(steps.release.outputs) }}' > release.json
-      - run: |
-          echo "{\"test\": \"$(git rev-parse --short $GITHUB_SHA)\"}" > release.json
-      - run: cat release.json
+        id: releaseInfo
+      - run: mkdir assets
+      - run: echo '${{ toJson(steps.releaseInfo.outputs) }}' > assets/release.json
+      # - run: |
+      #     echo "{\"test\": \"$(git rev-parse --short $GITHUB_SHA)\"}" > release.json
+      - run: cat assets/release.json
