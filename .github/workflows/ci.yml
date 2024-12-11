@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Test multiline output
         run: |
-          for alias in $(echo ${{ env.ALIASES }} | tr "," "\n"); do
+          for alias in $(echo ${{ vars.ALIASES }} | tr "," "\n"); do
             echo domain: $alias
           done
       # RELEASE ACTION
