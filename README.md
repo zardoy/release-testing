@@ -1,5 +1,7 @@
 # Testing Release
 
+<a href="https://github.com/developmentseed/geojson-map-server/releases/tag/v0.0.1" target="_blank">v0.0.1</a>
+
 ```geojson
 {
   "type": "FeatureCollection",
