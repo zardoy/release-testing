@@ -1,0 +1,23 @@
+name: Build Docker Image
+
+on:
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout minecraft-web-client
+        uses: actions/checkout@v4
+        with:
+          repository: zardoy/minecraft-web-client
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false  # Just build, don't push to any registry
+          tags: minecraft-web-client:latest
