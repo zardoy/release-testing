@@ -9,9 +9,9 @@ jobs:
     steps:
       - name: Test multiline output
         run: |
-          for alias in $(echo ${{ vars.ALIASES }} | tr "," "\n"); do
-            echo domain: $alias
-          done
+          npm i -g pnpm tsx
+          pnpm i canvas
+          echo "import { Canvas } from 'canvas';const canvas = new Canvas(100, 100);canvas.toBuffer('image/png');" | tsx
       # RELEASE ACTION
       # - uses: actions/checkout@v2
       # - run: npm i -g pnpm
